@@ -19,18 +19,13 @@ function loadFunction()
 function onDeviceReady()
 {
 	console.log("onDeviceReady Hit");
-	$.mobile.loading( "hide" );
 	
 	console.log("launchPreLoader");
- 	$.mobile.loader.prototype.options.text = "loading";
-  	$.mobile.loader.prototype.options.textVisible = false;
-  	$.mobile.loader.prototype.options.theme = "a";
-  	$.mobile.loader.prototype.options.html = "";
-  	$.mobile.loading( 'show', {
-	text: 'obtaining geoposition...',
-	textVisible: true,
-	});
 	
+	document.getElementById("weatherSearchButton").addEventListener("click", handleSearch);
+	document.getElementById("umbrellaButton").addEventListener("click", doUmbrellaQuery);
+	document.getElementById("sunglassesButton").addEventListener("click", doSunglassesQuery);
+	document.getElementById("city").addEventListener("focusin", searchFocus);
 	var options = {enableHighAccuracy: false, timeout: 30000};
 	navigator.geolocation.getCurrentPosition(startProcess, onPositionRecivedError, options);
 }
@@ -48,7 +43,6 @@ function onPositionRecivedError(error)
 function startProcess(location)
 {
 	console.log("startProcess Hit");
-	$.mobile.loading( "hide" );
 	console.log(location.coords.latitude + ' & ' + location.coords.longitude);
 	getGeoLocationWeatherData(location);
 }

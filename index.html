@@ -5,21 +5,105 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1"> 
 	<title>Kairos Geo Map</title> 
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0-rc.2/jquery.mobile-1.2.0-rc.2.min.css" />
+	<script src="http://code.jquery.com/jquery-1.8.1.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.2.0-rc.2/jquery.mobile-1.2.0-rc.2.min.js"></script>
 	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
-	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.3/jquery.mobile-1.4.3.min.css" />
-	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-	<script src="http://code.jquery.com/mobile/1.4.3/jquery.mobile-1.4.3.min.js"></script>
-	
+	<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+	<script src="https://cdn.import.io/js/2.0.0/importio.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/main.css">
-	
 </head>
 
 <body onload="launchPreLoader()">
-	<article id="testArtice">
+	
+	<!-- Start of page: #geoLoc -->
+	<div data-role="page" id="geoLoc">
+		<div data-role="header" class="geoPageHeaders">
+			<h1>Kairos Geo</h1>
+		</div><!-- /header -->
+		
+		<div data-role="content">
+			<article id="geoMapArticle">
 
-    </article>	
+    		</article>
+    		<a href="#citySearch" data-rel="dialog" type="button" data-role="button" data-inline="true" data-mini="true" data-icon="search" data-theme="b">Search</a>
+			<a href="#umbrellas" data-rel="dialog"  id="umbrellaButton" type="button" data-role="button" data-inline="true" data-mini="true" data-icon="grid" data-theme="e">Umbrellas</a>
+			<a href="#sunGlasses" data-rel="dialog"  id="sunglassesButton" type="button" data-role="button" data-inline="true" data-mini="true" data-icon="grid" data-theme="e">Sunglasses</a>
+		</div>
+		<!-- /content -->
+		
+	</div><!-- /page geoLoc -->
+	
+	<!-- Start of page: #citySearch -->
+	<div data-role="page" id="citySearch">
+	
+		<div data-role="header" class="geoPageHeaders">
+			<h1>City Search</h1>
+		</div><!-- /header -->
+		
+		<div data-role="content">	
+			<form action="" method="POST" id="cityForm">
+		
+				<a href="#" id="weatherSearchButton" data-role="button" data-rel="dialog" data-theme="b">Search Weather</a>
+				
+			    <input type="text" value="" id="city" class="citySearchBar" placeholder="Enter City Here" onfocus="this.select();" onmouseup="return false;">
+			    
+    			<article id="searchMapArticle">
+
+    			</article>
+		 
+				</form>			
+		</div><!-- /content -->
+		
+		<div data-role="footer">
+		
+		</div><!-- /footer -->
+	</div><!-- /page citySearch -->
+	
+	
+	<!-- Start of page: #sunGlasses -->
+	<div data-role="page" id="sunGlasses">
+	
+		<div data-role="header" class="geoPageHeaders">
+			<h1>Treat Yourself</h1>
+			<h1>Buy Some</h1>
+			<h1>Shades</h1>
+		</div><!-- /header -->
+	
+		<div data-role="content" align="center">
+			<p id="sunGlassesContent" class="sunGlassesContent">...</p>
+		</div><!-- /content -->
+	
+		<div data-role="footer">
+		
+		</div><!-- /footer -->
+	</div><!-- /page sunGlasses -->
+	<!-- Start of page: #umbrellas -->
+	<div data-role="page" id="umbrellas">
+	
+		<div data-role="header" class="geoPageHeaders">
+			<h1>You Might</h1>
+			<h1>Need</h1>
+			<h1>An Umbrella</h1>
+		</div><!-- /header -->
+		
+		<div data-role="content" align="center">
+			<p id="umbrellasContent" class="umbrellasContent">...</p>
+		</div><!-- /content -->
+		
+		<div data-role="footer">
+		
+		</div><!-- /footer -->
+	</div><!-- /page umbrellas -->
+	
 </body>
-	<script src="js/map.js"></script>
+	<script src="js/searchMap.js"></script>
+	<script src="js/cityFilter.js"></script>
+	<script src="js/umbrella.js"></script>
+	<script src="js/sunglasses.js"></script>
+	<script src="js/geoMap.js"></script>
+	<script src="js/searchWeather.js"></script>
 	<script src="js/geoLocationWeather.js"></script>
 	<script src="js/initialise.js"></script>
 	<script src="js/preloader.js"></script>

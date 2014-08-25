@@ -117,6 +117,22 @@ function displayLocationWeather(data)
 	geoLocationWeatherData.push((data.main.temp - 273.15));
 	geoLocationWeatherData.push(image);
 	console.log(geoLocationWeatherData);
-	onPositionSuccess(geoLocationWeatherData);
+	document.addEventListener("deviceready", onPositionSuccess(geoLocationWeatherData));
+	//document.getElementById("geoLoc").addEventListener("load", onPositionSuccess(geoLocationWeatherData));
+	
+	/* Determine If the weather is clear or rainy */
+	/* If weather is clear show Sunglasses Button */   		
+	/* If weather is clear show Umbrella Button */   		
+	var id = data.weather[0].id + "";
+	if( id[0] === '2' || id[0] === '3' || id[0] === '5')
+	{
+		$( "#umbrellaButton").show();
+		$( "#sunglassesButton").hide();
+	}
+	if(id[0] === '8')
+	{
+		$( "#umbrellaButton").hide();
+		$( "#sunglassesButton").show();
+	}
 
 }
