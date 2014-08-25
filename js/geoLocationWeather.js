@@ -118,7 +118,6 @@ function displayLocationWeather(data)
 	geoLocationWeatherData.push(image);
 	console.log(geoLocationWeatherData);
 	document.addEventListener("deviceready", onPositionSuccess(geoLocationWeatherData));
-	//document.getElementById("geoLoc").addEventListener("load", onPositionSuccess(geoLocationWeatherData));
 	
 	/* Determine If the weather is clear or rainy */
 	/* If weather is clear show Sunglasses Button */   		
@@ -134,5 +133,30 @@ function displayLocationWeather(data)
 		$( "#umbrellaButton").hide();
 		$( "#sunglassesButton").show();
 	}
+	/* Send data from the prevous array via ajax to the PHP backend */
+	/* For Writing to the SQL DB */
+	$.ajax({
+		type: "POST",
+		url: "http://ec2-54-77-158-182.eu-west-1.compute.amazonaws.com/geoLocSave.php",
+		data: { lon: geoLocationWeatherData[0] , lat : geoLocationWeatherData[1],
+			windspeed: geoLocationWeatherData[2], deg : geoLocationWeatherData[3],
+			sunrise: geoLocationWeatherData[4], sunset : geoLocationWeatherData[5],
+			country: geoLocationWeatherData[6], name : geoLocationWeatherData[7],
+			weatherid: geoLocationWeatherData[8], desc : geoLocationWeatherData[9],
+			main: geoLocationWeatherData[10], humidity : geoLocationWeatherData[11],
+			tempmax: geoLocationWeatherData[12], tempmin : geoLocationWeatherData[13],
+			temp: geoLocationWeatherData[14]},
+		success: function(data){
+		console.log(data);
+		console.log('Your comment was successfully added');
+		},
+		error: function(xhr, ajaxOptions, thrownError){
+			console.log(data);
+			console.log(xhr.status);
+			console.log(xhr.responseText);
+			console.log(thrownError);
+			console.log('There was an error adding your comment');
+		}
+	});
 
 }

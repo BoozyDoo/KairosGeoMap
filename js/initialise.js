@@ -1,18 +1,3 @@
-/* Listen For Signal that Device is ready */
-
-function loadFunction()
-{
-	if (navigator.userAgent.match(/Android/)) 
-	{
-        document.addEventListener("deviceready", onDeviceReady, false);
-	} 
-	else 
-	{
-		console.log("loadFunction Hit");
-		onDeviceReady();
-	}
-}
-
 /* Once the device is ready Get Devices Current Position */
 	/* Pass through a time out parameter of  30 seconds */
 	/* Listen For the Search Button to be clicked */

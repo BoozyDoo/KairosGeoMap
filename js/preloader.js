@@ -1,7 +1,15 @@
-/* Display Loading message and spinner */
+/* Listen For Signal that Device is ready */
 
 function launchPreLoader()
 {
 	console.log("launchPreLoader Hit");
-	loadFunction();
+	if (navigator.userAgent.match(/Android/)) 
+	{
+        document.addEventListener("deviceready", onDeviceReady, false);
+	} 
+	else 
+	{
+		console.log("loadFunction Hit");
+		onDeviceReady();
+	}
 };
