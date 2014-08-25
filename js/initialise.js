@@ -4,9 +4,6 @@
 function onDeviceReady()
 {
 	console.log("onDeviceReady Hit");
-	
-	console.log("launchPreLoader");
-	
 	document.getElementById("weatherSearchButton").addEventListener("click", handleSearch);
 	document.getElementById("umbrellaButton").addEventListener("click", doUmbrellaQuery);
 	document.getElementById("sunglassesButton").addEventListener("click", doSunglassesQuery);
